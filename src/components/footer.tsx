@@ -30,7 +30,7 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
-            <h2 className="text-2xl font-bold text-gradient-primary mb-2">DEV<span className="text-accent">PORTFOLIO</span></h2>
+            <h2 className="text-2xl font-bold text-gradient-primary font-orbitron">Jirka Tarašovič</h2>
             <p className="text-foreground/60">Crafting digital experiences with code</p>
           </div>
           

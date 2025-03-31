@@ -59,9 +59,9 @@ export default function Navbar() {
           {/* Logo */}
           <a 
             href="#home" 
-            className="text-2xl font-bold text-gradient-primary"
+            className="text-2xl font-bold text-gradient-primary font-orbitron"
           >
-            DEV<span className="text-accent">PORTFOLIO</span>
+            Jirka Tarašovič
           </a>
           
           {/* Desktop Navigation */}
