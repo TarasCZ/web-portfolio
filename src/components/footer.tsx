@@ -1,14 +1,28 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUp, FileText, Download } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
+  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
+  };
+
+  const downloadCV = () => {
+    // Create link to download the CV
+    const link = document.createElement('a');
+    link.href = '/cv.pdf';
+    link.download = 'developer_cv.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -21,6 +35,17 @@ export default function Footer() {
           </div>
           
           <div className="flex items-center gap-6">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="flex items-center gap-2"
+              onClick={downloadCV}
+            >
+              <FileText size={16} />
+              <span>{t('footer.download_cv')}</span>
+              <Download size={16} />
+            </Button>
+            
             <a 
               href="https://github.com/yourusername" 
               target="_blank"
@@ -58,7 +83,7 @@ export default function Footer() {
             onClick={scrollToTop}
             className="flex items-center gap-2 text-sm text-foreground/60 hover:text-primary transition-colors"
           >
-            <span>Back to top</span>
+            <span>{t('footer.back_to_top')}</span>
             <ArrowUp size={16} />
           </button>
         </div>

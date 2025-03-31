@@ -25,6 +25,10 @@ export const translations: Translations = {
   // Employment timeline
   'employment.title': { en: 'Employment History', cs: 'Historie zaměstnání' },
   'employment.subtitle': { en: 'My professional journey and career experience', cs: 'Moje profesní cesta a kariérní zkušenosti' },
+  
+  // Footer
+  'footer.download_cv': { en: 'Download CV', cs: 'Stáhnout CV' },
+  'footer.back_to_top': { en: 'Back to top', cs: 'Zpět nahoru' },
 };
 
 // Create context interface
