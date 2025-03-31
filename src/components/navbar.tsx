@@ -2,13 +2,16 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import LanguageSwitcher from './language-switcher';
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Contact', href: '#contact' }
+  { name: 'nav.home', href: '#home' },
+  { name: 'nav.about', href: '#about' },
+  { name: 'nav.skills', href: '#skills' },
+  { name: 'nav.employment', href: '#employment' },
+  { name: 'nav.projects', href: '#projects' },
+  { name: 'nav.contact', href: '#contact' }
 ];
 
 const socialLinks = [
@@ -21,6 +24,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const { t } = useLanguage();
 
   // Handle scroll effect for navbar
   useEffect(() => {
@@ -71,11 +75,13 @@ export default function Navbar() {
                   activeSection === link.href.substring(1) ? 'text-primary after:content-[""] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-foreground/80'
                 )}
               >
-                {link.name}
+                {t(link.name)}
               </a>
             ))}
             
             <div className="flex items-center gap-4 ml-4">
+              <LanguageSwitcher />
+              
               {socialLinks.map(link => (
                 <a 
                   key={link.name} 
@@ -121,23 +127,27 @@ export default function Navbar() {
               )}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {link.name}
+              {t(link.name)}
             </a>
           ))}
           
-          <div className="flex items-center gap-6 mt-8">
-            {socialLinks.map(link => (
-              <a 
-                key={link.name} 
-                href={link.href}
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label={link.name}
-                className="text-foreground/80 hover:text-primary transition-colors"
-              >
-                <link.icon size={24} />
-              </a>
-            ))}
+          <div className="flex flex-col items-center gap-6 mt-8">
+            <LanguageSwitcher />
+            
+            <div className="flex items-center gap-6 mt-4">
+              {socialLinks.map(link => (
+                <a 
+                  key={link.name} 
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label={link.name}
+                  className="text-foreground/80 hover:text-primary transition-colors"
+                >
+                  <link.icon size={24} />
+                </a>
+              ))}
+            </div>
           </div>
         </nav>
       </div>

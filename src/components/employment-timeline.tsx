@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import AnimatedElement from './animated-element';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface Employment {
   title: string;
@@ -38,6 +39,8 @@ const employments: Employment[] = [
 ];
 
 export default function EmploymentTimeline() {
+  const { t } = useLanguage();
+  
   return (
     <section id="employment" className="py-20 relative">
       {/* Background accent */}
@@ -46,10 +49,10 @@ export default function EmploymentTimeline() {
       <div className="container mx-auto px-6">
         <AnimatedElement variant="fade-up" className="mb-16 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gradient-primary">
-            Employment History
+            {t('employment.title')}
           </h2>
           <p className="text-foreground/60 max-w-2xl mx-auto">
-            My professional journey and career experience
+            {t('employment.subtitle')}
           </p>
         </AnimatedElement>
         

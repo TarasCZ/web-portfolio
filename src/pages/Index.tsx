@@ -9,6 +9,7 @@ import ProjectsSection from '@/components/projects-section';
 import ContactSection from '@/components/contact-section';
 import Footer from '@/components/footer';
 import { initScrollAnimations } from '@/utils/scroll-animations';
+import { LanguageProvider } from '@/contexts/LanguageContext';
 
 const Index = () => {
   useEffect(() => {
@@ -17,18 +18,20 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen">
-      <Navbar />
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <SkillsSection />
-        <EmploymentTimeline />
-        <ProjectsSection />
-        <ContactSection />
-      </main>
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen">
+        <Navbar />
+        <main>
+          <HeroSection />
+          <AboutSection />
+          <SkillsSection />
+          <EmploymentTimeline />
+          <ProjectsSection />
+          <ContactSection />
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 };
 
